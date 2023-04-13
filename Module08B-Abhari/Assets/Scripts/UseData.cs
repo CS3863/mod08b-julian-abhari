@@ -70,13 +70,14 @@ This dataset is openly shared, without restriction, in accordance with the EOSDI
         dataObject = data[currentEntry]["day"];
         float dayData = map(System.Convert.ToSingle(dataObject), 138, 159, 0, 1);
 
+        dataObject = data[currentEntry]["hour"];
+        float hourData = map(System.Convert.ToSingle(dataObject), 15.279f, 27.417f, 0, 1);
+
         currentEntry += 1;
 
         transform.localScale = new Vector3(scaledData, scaledData, scaledData);
         Debug.Log("co2 count: " + currentEntry + "\nco2 data: " + co2Data);
-
-
-        material.color = new Color(1f, 1f, 1f);
+        material.color = new Color(yearData, dayData, hourData);
     }
 
     float map(float value, float domainMin, float domainMax, float newDomainMin, float newDomainMax)
